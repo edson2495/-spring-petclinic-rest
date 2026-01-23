@@ -19,13 +19,13 @@ pipeline {
         
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test -B -ntp'
             }
         }
 
         stage('Package') {
             steps {
-                sh 'mvn package'
+                sh 'mvn package -B -ntp -DskipTests'
             }
         }
     }
