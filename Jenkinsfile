@@ -10,7 +10,9 @@ pipeline {
             //args '-v /root/.m2:/root/.m2'
         }
     }
-
+    options{
+        timeout(time: 1, unit: 'MINUTES')
+    }
     triggers{
         pollSCM("* * * * *")
         githubPush()
