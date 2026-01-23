@@ -5,11 +5,11 @@ pipeline {
     }
     
     stages {
-        stage('Checkout SCM') {
+        /*stage('Checkout SCM') {
             steps {
                 git branch: 'main', url: 'https://github.com/edson2495/-spring-petclinic-rest.git'
             }
-        }
+        }*/
         
         stage('Build') {
             steps {
