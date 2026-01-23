@@ -3,7 +3,7 @@ pipeline {
     tools {
         maven 'maven3.9.11'
     }*/
-
+    
     agent {
         docker {
             image 'maven:3.9.12-eclipse-temurin-17'
@@ -11,7 +11,7 @@ pipeline {
         }
     }
     options{
-        timeout(time: 1, unit: 'MINUTES')
+        timeout(time: 5, unit: 'MINUTES')
     }
     triggers{
         pollSCM("* * * * *")
