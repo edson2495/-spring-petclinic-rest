@@ -1,7 +1,14 @@
 pipeline {
-    agent any
+    /*agent any
     tools {
         maven 'maven3.9.11'
+    }*/
+
+    any {
+        docker {
+            image 'maven:3.9.12-eclipse-temurin-17'
+            //args '-v /root/.m2:/root/.m2'
+        }
     }
     
     stages {
