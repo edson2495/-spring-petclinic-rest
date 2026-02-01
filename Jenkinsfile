@@ -27,10 +27,10 @@ pipeline {
         
         stage('Compile') {
             steps {
-                //sh 'mvn clean compile -B -ntp'
-                withEnv(['MAVEN_OPTS=-Xms256m -Xmx1024m -XX:+UseG1GC']) {
+                sh 'mvn clean compile -B -ntp'
+                /* withEnv(['MAVEN_OPTS=-Xms256m -Xmx1024m -XX:+UseG1GC']) {
                     sh 'mvn clean compile -B -ntp'
-                }
+                } */
             }
         }
         
@@ -64,6 +64,13 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarqube') { //con el mismo nombre que creo el server en jenkins lo llama
                     sh 'mvn sonar:sonar -B -ntp'
+                }
+            }
+        }
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 1, unit: 'MINUTES'){
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
