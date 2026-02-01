@@ -35,6 +35,11 @@ pipeline {
             steps {
                 sh 'mvn test -B -ntp'
             }
+            post {
+                success {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
         }
 
         stage('Package') {
