@@ -114,7 +114,7 @@ class PetTypeRestControllerTests {
             .andExpect(status().isOk())
             .andExpect(content().contentType("application/json"))
             .andExpect(jsonPath("$.id").value(1))
-            .andExpect(jsonPath("$.name").value("cat2"));//aca modifica
+            .andExpect(jsonPath("$.name").value("cat"));
     }
 
     @Test
