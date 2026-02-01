@@ -57,6 +57,13 @@ pipeline {
                 sh 'mvn package -B -ntp -DskipTests'
             }
         }
+        stage('Sonarqube') {
+            steps {
+                withSonarQubeEnv('sonarqube') { //con el mismo nombre que creo el server en jenkins lo llama
+                    sh 'mvn sonar:sonar -B -ntp'
+                }
+            }
+        }
     }
     post {
         success {
