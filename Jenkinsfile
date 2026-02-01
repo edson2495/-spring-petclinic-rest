@@ -27,7 +27,10 @@ pipeline {
         
         stage('Compile') {
             steps {
-                sh 'mvn clean compile -B -ntp'
+                //sh 'mvn clean compile -B -ntp'
+                withEnv(['MAVEN_OPTS=-Xms256m -Xmx1024m -XX:+UseG1GC']) {
+                    sh 'mvn clean compile -B -ntp'
+                }
             }
         }
         
