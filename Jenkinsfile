@@ -60,7 +60,7 @@ pipeline {
                 sh 'mvn package -B -ntp -DskipTests'
             }
         }
-        stage('Sonarqube') {
+        /* stage('Sonarqube') {
             steps {
                 withSonarQubeEnv('sonarqube') { //con el mismo nombre que creo el server en jenkins lo llama
                     sh 'mvn sonar:sonar -B -ntp'
@@ -71,6 +71,27 @@ pipeline {
             steps {
                 timeout(time: 2, unit: 'MINUTES'){
                     waitForQualityGate abortPipeline: true
+                }
+            }
+        } */
+        stage('SonarQube') {
+            steps {
+                withSonarQubeEnv('sonarqube'){
+                    sh 'env | sort'
+                    script {
+                        if (env.CHANGE_ID) { //si existe una variable de entorno llamada change_id
+                            sh """
+                                mvn sonar:sonar -B -ntp \
+                                -Dsonar.pullrequest.key=${env.CHANGE_ID} \
+                                -Dsonar.pullrequest.branch=${env.CHANGE_BRANCH} \
+                                -Dsonar.pullrequest.base=${env.CHANGE_TARGET}
+                            """
+                        } else {
+                            def branchName = GIT_BRANCH.replaceFirst('^origin/', '')
+                            println "Branch name: ${branchName}"
+                            sh "mvn sonar:sonar -B -ntp -Dsonar.branch.name=${branchName} -Dsonar.branch.target=${branchName}"
+                        }
+                    }
                 }
             }
         }
