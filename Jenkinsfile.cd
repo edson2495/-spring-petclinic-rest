@@ -19,6 +19,9 @@ pipeline {
             steps {
                 script{
 
+                    sh 'env | sort'
+                    env.MAVEN_HOME = '/usr/share/maven'
+
                     // Forma 1 - Usando RtMaven
 
                     def releases = 'spring-petclinic-rest-release'
@@ -27,7 +30,7 @@ pipeline {
 
                     def rtMaven = Artifactory.newMavenBuild()
                     rtMaven.deployer server: server, releaseRepo: releases, snapshotRepo: snapshots
-                    
+
                     def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install -B -ntp -DskipTests'
 
                     server.publishBuildInfo buildInfo
