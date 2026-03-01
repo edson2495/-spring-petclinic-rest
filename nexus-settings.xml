@@ -1,0 +1,19 @@
+
+<settings>
+  <servers>
+      <server>
+          <id>nexus</id>
+          <username>admin</username>
+          <password>Ee12345678</password>
+      </server>
+  </servers>
+
+  <mirrors>
+    <mirror>
+      <id>nexus</id>
+      <name>Nexus remote as mirror</name>
+      <url>http://35.92.168.214:8083/repository/spring-petclinic-rest-repository</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+</settings>
