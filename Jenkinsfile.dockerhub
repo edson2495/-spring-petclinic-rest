@@ -34,9 +34,9 @@ pipeline {
                     // Forma 1: Usando docker build para misma plataforma del host
 
                     // sh 'docker build --help'
-                    // sh 'docker build -t danycenas/spring-petclinic-rest:3.2.1 .'
+                    // sh 'docker build -t edson2495/spring-petclinic-rest:3.2.1 .'
 
-                    // def app = docker.build("danycenas/${pom.artifactId}:${pom.version}")
+                    // def app = docker.build("edson2495/${pom.artifactId}:${pom.version}")
                     // docker.withRegistry('https://registry.hub.docker.com/', 'dockerhub-credentials') {
                     //     app.push()
                     //     app.push('latest')
@@ -54,8 +54,8 @@ pipeline {
                         sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
                         sh """
                             docker buildx build \
-                                -t danycenas/${pom.artifactId}:${pom.version} \
-                                -t danycenas/${pom.artifactId}:latest \
+                                -t edson2495/${pom.artifactId}:${pom.version} \
+                                -t edson2495/${pom.artifactId}:latest \
                                 --platform linux/amd64,linux/arm64 --push .
                         """
                     }
