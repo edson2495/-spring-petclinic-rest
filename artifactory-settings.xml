@@ -12,7 +12,7 @@
         </server>
     </servers>
 
-      <mirrors>
+  <mirrors>
     <mirror>
       <id>artifactory</id>
       <name>Artifactory remote as mirror</name>
