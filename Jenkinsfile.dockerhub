@@ -28,7 +28,7 @@ pipeline {
 
                 script {
 
-                    
+                    sh 'docker --version'
 
                 }
             }
