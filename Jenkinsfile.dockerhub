@@ -23,21 +23,16 @@ pipeline {
             agent any
 
             steps {
+
+                sh 'docker --version'   
+
                 script {
 
-                    sh 'docker --version'   
+                    
 
                 }
             }
         }
         
-    }
-    post {
-        success {
-            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-        }
-        cleanup{
-            cleanWs()
-        }
     }
 }
