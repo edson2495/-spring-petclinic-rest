@@ -1,0 +1,24 @@
+
+<settings>
+    <servers>
+        <server>
+            <id>artifactory</id>
+            <username>admin</username>
+            <password>Ee12345678</password>
+            <!-- <password>AP5JqKWVzv25Yx5mPQqcFp3CtVN</password> -->
+            <!-- <password>cmVmdGtuOjAxOjE4MDIzOTM5ODU6Q1BJZkczRDNqMnE5dlJ6YWhjaTJDM0RKWWZh</password> -->
+            <!-- <username>${ARTIFACTORY_CREDENTIALS_USR}</username>
+            <password>${ARTIFACTORY_CREDENTIALS_PSW}</password> -->
+        </server>
+    </servers>
+
+      <mirrors>
+    <mirror>
+      <id>artifactory</id>
+      <name>Artifactory remote as mirror</name>
+      <url>http://35.92.168.214:8081/artifactory/maven-central</url>
+      <!-- <url>http://34.219.176.187:8081/artifactory/spring-petclinic-rest-repository</url> -->
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+</settings>
