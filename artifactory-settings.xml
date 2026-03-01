@@ -5,7 +5,7 @@
             <id>artifactory</id>
             <username>admin</username>
             <password>cmVmdGtuOjAxOjE4MDM5MTk3MDU6WlJqSmt1UjBMeHhLcXgyREVZM3FUUmQ5a2la</password>
-            <password>APAtGTxSENY3ZYZ1h6YtZvsTVFy</password> <!-- sigue siendo un riesgo dice -->
+            <!-- <password>APAtGTxSENY3ZYZ1h6YtZvsTVFy</password> sigue siendo un riesgo dice -->
             <!-- <password>Ee12345678</password> -->
         </server>
     </servers>
