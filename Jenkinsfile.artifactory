@@ -6,6 +6,9 @@ pipeline {
         }
     }
     
+    environment {
+        ARTIFACTORY_CREDENTIALS = credentials('artifactory-credentials')
+    }
     
     stages {
         
