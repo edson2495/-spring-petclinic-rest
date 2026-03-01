@@ -1,12 +1,14 @@
 pipeline {
 
-    agent {
-        docker {
-            image 'maven:3.9.11-eclipse-temurin-17'
-        }
-    }
+    agent none
     
     stages {
+
+        agent {
+            docker {
+                image 'maven:3.9.11-eclipse-temurin-17'
+            }
+        }
         
         stage('Package') {
             steps {
@@ -16,6 +18,9 @@ pipeline {
             
         
         stage('DockerHub') {
+
+            agent any
+
             steps {
                 script {
 
