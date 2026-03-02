@@ -66,7 +66,7 @@ pipeline {
         }
     }
     environment {
-        ARTIFACTORY_URL = 'http://34.219.60.221:8081/artifactory'
+        ARTIFACTORY_URL = 'http://35.86.105.94:8081/artifactory'
         REPO = 'spring-petclinic-rest-snapshot'
         RELEASE_REPO = 'spring-petclinic-rest-release'
         ARTIFACTORY_TOKEN = credentials('artifactory-token')        
