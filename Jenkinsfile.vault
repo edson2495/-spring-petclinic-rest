@@ -1,0 +1,31 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Vault: DockerHub token') {
+      steps {
+        script {
+          withVault(
+            vaultSecrets: [[
+              path: 'secret/devops/dockerhub-credentials',
+              secretValues: [
+                [envVar: 'DOCKER_USER',  vaultKey: 'username'],
+                [envVar: 'DOCKER_TOKEN', vaultKey: 'token']
+              ]
+            ]]
+          ) {
+            sh '''
+              env | sort
+
+              echo "DOCKER_USER: $DOCKER_USER"
+              echo "DOCKER_TOKEN (len): ${#DOCKER_TOKEN}"
+            '''
+
+
+            sh 'echo $DOCKER_TOKEN | docker login -u $DOCKER_USER --password-stdin'
+          }
+        }
+      }
+    }
+  }
+}
